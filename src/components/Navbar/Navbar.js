@@ -9,16 +9,8 @@ import {Link} from "react-router-dom";
 import {makeStyles} from "@mui/styles";
 
 const useStyles = makeStyles(() => ({
-    title: {
-        flexGrow: 1,
-        textAlign: "left"
-    },
-    root: {
-        flexGrow: 1
-    },
     link: {
         textDecoration: "none",
-        boxShadow: "none",
         color: "white"
     }
 }));
@@ -26,17 +18,17 @@ const useStyles = makeStyles(() => ({
 export default function Navbar() {
     const classes = useStyles();
     return (
-        <Box sx={{flexGrow: 1}}>
-            <AppBar position="static">
+        <Box sx={{flexGrow: 2}}>
+            <AppBar position="static" sx={{ bgcolor: "#FC6A03" }}>
                 <Toolbar>
                     <IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={{mr: 2}}>
                         <MenuIcon/>
                     </IconButton>
-                    <Typography variant="h6" className={classes.title}>
-                        <Link className={classes.link} to={"/"}>Home</Link>
+                    <Typography variant="h6" marginRight={5}>
+                        <Link className={classes.link} to={"home"}>HOME</Link>
                     </Typography>
-                    <Typography variant="h6" className={classes.title}>
-                        <Link className={classes.link} to={"/"}>Book Store</Link>
+                    <Typography variant="h6" >
+                        <Link className={classes.link} to={"books"}>BOOK STORE</Link>
                     </Typography>
                 </Toolbar>
             </AppBar>
