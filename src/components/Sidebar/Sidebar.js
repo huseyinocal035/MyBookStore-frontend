@@ -1,27 +1,64 @@
-import React from 'react';
-import '../../App.css';
-import {SidebarData} from "./SidebarData";
+import React, {useState} from 'react';
+import styled from "styled-components";
+import {Link} from "react-router-dom";
 
-export default function Sidebar() {
+import * as FaIcons from "react-icons/fa";
+import {SidebarData} from "./SidebarData";
+import SubMenu from "./SubMenu";
+
+const Nav = styled.div`
+  background: darkorange;
+  height: 80px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+`
+
+const NavIcon = styled(Link)`
+  margin-left: 16rem;
+  font-size: 2rem;
+  height: 80px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+`
+
+const SidebarNav = styled.nav`
+  background: #252831;
+  width: 250px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 80px;
+  left: ${({ sidebar }) => (sidebar ? '0' : '-100%')};
+  transition: 350ms;
+  z-index: 10;
+`
+
+const SidebarWrap = styled.div`
+  width: 100%;
+`
+
+const Sidebar = () => {
+    const [sidebar, setSidebar] = useState(false)
+    const showSidebar = () => setSidebar(!sidebar)
     return (
-        <div className="Sidebar">
-            <ul className="SidebarList">
-                {SidebarData.map((val, key) => {
-                    return (
-                        <li
-                            key={key}
-                            className="row"
-                            id={window.location.pathname === val.link ? "active" : ""}
-                            onClick={() => {
-                                window.location.pathname = val.link;
-                            }}
-                        >
-                            <div id="icon">{val.icon}</div>
-                            <div id="title">{val.title}</div>
-                        </li>
-                    );
-                })}
-            </ul>
-        </div>
+        <>
+            <Nav>
+                <NavIcon to="#">
+                    <FaIcons.FaBars onClick={showSidebar}/>
+                </NavIcon>
+            </Nav>
+            <SidebarNav sidebar={sidebar}>
+                <SidebarWrap>
+                    {SidebarData.map((item, index) => {
+                        return <SubMenu item={item} key={index} />;
+                    })}
+                </SidebarWrap>
+            </SidebarNav>
+        </>
     );
-}
+};
+
+export default Sidebar;

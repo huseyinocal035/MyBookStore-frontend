@@ -1,28 +1,50 @@
 import React from "react";
-import HomeIcon from '@mui/icons-material/Home';
-import MenuBookSharpIcon from '@mui/icons-material/MenuBookSharp';
-import PeopleSharpIcon from '@mui/icons-material/PeopleSharp';
-import ExitToAppSharpIcon from '@mui/icons-material/ExitToAppSharp';
+import * as FaIcons from "react-icons/fa";
+import * as AiIcons from "react-icons/ai"
+import * as IoIcons from "react-icons/io"
+import * as RiIcons from "react-icons/ri"
+import * as ImIcons from "react-icons/im"
 
 export const SidebarData = [
     {
-        title: "Home",
-        icon: <HomeIcon />,
-        link: "/home"
+        title: 'Home',
+        path: '/',
+        icon: <AiIcons.AiFillHome />
     },
     {
-        title: "Books",
-        icon: <MenuBookSharpIcon />,
-        link: "/books"
+        title: 'Books',
+        path: '/books',
+        icon: <ImIcons.ImBooks />
     },
     {
-        title: "Friends",
-        icon: <PeopleSharpIcon />,
-        link: "/friends"
+        title: 'Friends',
+        path: '/friends',
+        icon: <IoIcons.IoMdPeople />
     },
     {
-        title: "Logout",
-        icon: <ExitToAppSharpIcon />,
-        link: "/logout"
+        title: 'Messages',
+        path: '/messages',
+        icon: <FaIcons.FaEnvelopeOpenText />,
+
+        iconClosed: <RiIcons.RiArrowDownSFill />,
+        iconOpened: <RiIcons.RiArrowUpSFill />,
+
+        subNav: [
+            {
+                title: 'Message 1',
+                path: '/messages/message1',
+                icon: <IoIcons.IoIosPaper />
+            },
+            {
+                title: 'Message 2',
+                path: '/messages/message2',
+                icon: <IoIcons.IoIosPaper />
+            }
+        ]
     },
-]
+    {
+        title: 'Support',
+        path: '/support',
+        icon: <IoIcons.IoMdHelpCircle />
+    }
+];
